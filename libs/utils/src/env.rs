@@ -44,3 +44,20 @@ where
         }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_var_not_present() {
+        let result: Option<i32> = var("TEST_MISSING");
+        assert_eq!(result, None);
+    }
+
+    #[test]
+    fn test_var_serde_json_string_not_present() {
+        let result: Option<String> = var_serde_json_string("TEST_JSON_MISSING");
+        assert_eq!(result, None);
+    }
+}
